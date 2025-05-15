@@ -1,0 +1,1109 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+      "title": "OpenAPI definition",
+      "version": "v0"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:8080/api",
+        "description": "Generated server url"
+      }
+    ],
+    "paths": {
+      "/v1/relationships/{relationshipId}": {
+        "get": {
+          "tags": [
+            "relationship-controller"
+          ],
+          "operationId": "getRelationship",
+          "parameters": [
+            {
+              "name": "relationshipId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "$ref": "#/components/schemas/RelationshipDefinitionResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "relationship-controller"
+          ],
+          "operationId": "updateRelationship",
+          "parameters": [
+            {
+              "name": "relationshipId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RelationshipDefinitionRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "$ref": "#/components/schemas/RelationshipDefinitionResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "relationship-controller"
+          ],
+          "operationId": "deleteRelationship",
+          "parameters": [
+            {
+              "name": "relationshipId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/v1/project/{projectId}": {
+        "get": {
+          "tags": [
+            "project-controller"
+          ],
+          "operationId": "getProjectForUser",
+          "parameters": [
+            {
+              "name": "projectId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "format": "uuid"
+              }
+            },
+            {
+              "name": "userId",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProjectConfigurationResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "project-controller"
+          ],
+          "operationId": "updateProject",
+          "parameters": [
+            {
+              "name": "projectId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "format": "uuid"
+              }
+            },
+            {
+              "name": "userId",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectConfigurationCreateRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProjectConfigurationResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/v1/entity/{entityId}": {
+        "get": {
+          "tags": [
+            "entity-controller"
+          ],
+          "operationId": "getEntity",
+          "parameters": [
+            {
+              "name": "entityId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "$ref": "#/components/schemas/EntityDefinitionResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "entity-controller"
+          ],
+          "operationId": "updateEntity",
+          "parameters": [
+            {
+              "name": "entityId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityDefinitionRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "$ref": "#/components/schemas/EntityDefinitionResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "entity-controller"
+          ],
+          "operationId": "deleteEntity",
+          "parameters": [
+            {
+              "name": "entityId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/v1/attribute/{attributeId}": {
+        "put": {
+          "tags": [
+            "attribute-controller"
+          ],
+          "operationId": "updateAttribute",
+          "parameters": [
+            {
+              "name": "attributeId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AttributeDefinitionRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AttributeDefinitionResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "attribute-controller"
+          ],
+          "operationId": "deleteAttribute",
+          "parameters": [
+            {
+              "name": "attributeId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/v1/relationships": {
+        "get": {
+          "tags": [
+            "relationship-controller"
+          ],
+          "operationId": "getAllRelationshipsForEntity",
+          "parameters": [
+            {
+              "name": "entityId",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/RelationshipDefinitionResponse"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "relationship-controller"
+          ],
+          "operationId": "createRelationship",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RelationshipDefinitionRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "$ref": "#/components/schemas/RelationshipDefinitionResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/v1/project": {
+        "get": {
+          "tags": [
+            "project-controller"
+          ],
+          "operationId": "getAllProjectsForUser",
+          "parameters": [
+            {
+              "name": "userId",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ProjectConfigurationResponse"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "project-controller"
+          ],
+          "operationId": "createProject",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectConfigurationCreateRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProjectConfigurationResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/v1/project/{projectId}/generate": {
+        "post": {
+          "tags": [
+            "generator-controller"
+          ],
+          "operationId": "generateProject",
+          "parameters": [
+            {
+              "name": "projectId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "format": "uuid"
+              }
+            },
+            {
+              "name": "ownerId",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/v1/entity": {
+        "get": {
+          "tags": [
+            "entity-controller"
+          ],
+          "operationId": "getAllEntitiesForProject",
+          "parameters": [
+            {
+              "name": "projectId",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/EntityDefinitionResponse"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "entity-controller"
+          ],
+          "operationId": "createEntity",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityDefinitionRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "$ref": "#/components/schemas/EntityDefinitionResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/v1/attribute": {
+        "get": {
+          "tags": [
+            "attribute-controller"
+          ],
+          "operationId": "getAttributesByEntityId",
+          "parameters": [
+            {
+              "name": "entityId",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/AttributeDefinitionResponse"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "attribute-controller"
+          ],
+          "operationId": "createAttribute",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AttributeDefinitionRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AttributeDefinitionResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "RelationshipDefinitionRequest": {
+          "type": "object",
+          "properties": {
+            "sourceEntityId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "sourceFieldName": {
+              "type": "string",
+              "maxLength": 100,
+              "minLength": 0
+            },
+            "targetEntityId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "targetFieldName": {
+              "type": "string",
+              "maxLength": 100,
+              "minLength": 0
+            },
+            "relationshipType": {
+              "type": "string",
+              "enum": [
+                "ONE_TO_ONE",
+                "ONE_TO_MANY",
+                "MANY_TO_ONE",
+                "MANY_TO_MANY"
+              ]
+            },
+            "owningSide": {
+              "type": "boolean"
+            },
+            "fetchType": {
+              "type": "string",
+              "enum": [
+                "LAZY",
+                "EAGER"
+              ]
+            },
+            "joinColumnName": {
+              "type": "string",
+              "maxLength": 100,
+              "minLength": 0
+            },
+            "joinTableName": {
+              "type": "string",
+              "maxLength": 100,
+              "minLength": 0
+            },
+            "joinTableSourceColumnName": {
+              "type": "string",
+              "maxLength": 100,
+              "minLength": 0
+            },
+            "joinTableTargetColumnName": {
+              "type": "string",
+              "maxLength": 100,
+              "minLength": 0
+            }
+          },
+          "required": [
+            "owningSide",
+            "relationshipType",
+            "sourceEntityId",
+            "sourceFieldName",
+            "targetEntityId"
+          ]
+        },
+        "RelationshipDefinitionResponse": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "sourceEntityId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "sourceFieldName": {
+              "type": "string"
+            },
+            "targetEntityId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "relationshipType": {
+              "type": "string",
+              "enum": [
+                "ONE_TO_ONE",
+                "ONE_TO_MANY",
+                "MANY_TO_ONE",
+                "MANY_TO_MANY"
+              ]
+            },
+            "targetFieldName": {
+              "type": "string"
+            },
+            "owningSide": {
+              "type": "boolean"
+            },
+            "fetchType": {
+              "type": "string",
+              "enum": [
+                "LAZY",
+                "EAGER"
+              ]
+            },
+            "cascadeTypes": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ALL",
+                  "PERSIST",
+                  "MERGE",
+                  "REMOVE",
+                  "REFRESH",
+                  "DETACH"
+                ]
+              },
+              "uniqueItems": true
+            },
+            "description": {
+              "type": "string"
+            },
+            "joinColumnName": {
+              "type": "string"
+            },
+            "joinTableName": {
+              "type": "string"
+            },
+            "joinTableSourceColumnName": {
+              "type": "string"
+            },
+            "joinTableTargetColumnName": {
+              "type": "string"
+            }
+          }
+        },
+        "ProjectConfigurationCreateRequest": {
+          "type": "object",
+          "properties": {
+            "projectName": {
+              "type": "string",
+              "maxLength": 100,
+              "minLength": 0
+            },
+            "language": {
+              "type": "string",
+              "enum": [
+                "JAVA",
+                "KOTLIN",
+                "GO"
+              ]
+            },
+            "framework": {
+              "type": "string",
+              "enum": [
+                "SPRING_BOOT",
+                "GIN"
+              ]
+            },
+            "languageVersion": {
+              "type": "string",
+              "maxLength": 20,
+              "minLength": 0
+            },
+            "frameworkVersion": {
+              "type": "string",
+              "maxLength": 20,
+              "minLength": 0
+            },
+            "buildTool": {
+              "type": "string",
+              "enum": [
+                "MAVEN",
+                "GRADLE"
+              ]
+            },
+            "basePackage": {
+              "type": "string",
+              "maxLength": 255,
+              "minLength": 0,
+              "pattern": "^([a-zA-Z_]{1}[a-zA-Z0-9_]*(\\.[a-zA-Z_]{1}[a-zA-Z0-9_]*)*)?$"
+            },
+            "moduleName": {
+              "type": "string",
+              "maxLength": 255,
+              "minLength": 0
+            },
+            "databaseType": {
+              "type": "string",
+              "enum": [
+                "POSTGRESQL",
+                "MYSQL",
+                "MARIADB",
+                "ORACLE",
+                "SQL_SERVER",
+                "MONGODB",
+                "H2",
+                "NONE"
+              ]
+            },
+            "enabledOptions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "databaseType",
+            "framework",
+            "language",
+            "projectName"
+          ]
+        },
+        "ProjectConfigurationResponse": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "projectName": {
+              "type": "string"
+            },
+            "language": {
+              "type": "string",
+              "enum": [
+                "JAVA",
+                "KOTLIN",
+                "GO"
+              ]
+            },
+            "framework": {
+              "type": "string",
+              "enum": [
+                "SPRING_BOOT",
+                "GIN"
+              ]
+            },
+            "languageVersion": {
+              "type": "string"
+            },
+            "frameworkVersion": {
+              "type": "string"
+            },
+            "buildTool": {
+              "type": "string",
+              "enum": [
+                "MAVEN",
+                "GRADLE"
+              ]
+            },
+            "basePackage": {
+              "type": "string"
+            },
+            "moduleName": {
+              "type": "string"
+            },
+            "databaseType": {
+              "type": "string",
+              "enum": [
+                "POSTGRESQL",
+                "MYSQL",
+                "MARIADB",
+                "ORACLE",
+                "SQL_SERVER",
+                "MONGODB",
+                "H2",
+                "NONE"
+              ]
+            },
+            "enabledOptions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "updatedAt": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        },
+        "EntityDefinitionRequest": {
+          "type": "object",
+          "properties": {
+            "projectId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "entityName": {
+              "type": "string",
+              "maxLength": 100,
+              "minLength": 0
+            },
+            "tableName": {
+              "type": "string",
+              "maxLength": 100,
+              "minLength": 0
+            }
+          },
+          "required": [
+            "entityName",
+            "projectId"
+          ]
+        },
+        "AttributeDefinitionResponse": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "attributeName": {
+              "type": "string"
+            },
+            "dataType": {
+              "type": "string"
+            },
+            "columnName": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "isPrimaryKey": {
+              "type": "boolean"
+            },
+            "isRequired": {
+              "type": "boolean"
+            },
+            "isUnique": {
+              "type": "boolean"
+            },
+            "isIndexed": {
+              "type": "boolean"
+            },
+            "length": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "precision": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "scale": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "defaultValue": {
+              "type": "string"
+            }
+          }
+        },
+        "EntityDefinitionResponse": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "entityName": {
+              "type": "string"
+            },
+            "tableName": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "attributes": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/AttributeDefinitionResponse"
+              }
+            },
+            "relationships": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/RelationshipDefinitionResponse"
+              }
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "updatedAt": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        },
+        "AttributeDefinitionRequest": {
+          "type": "object",
+          "properties": {
+            "entityId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "attributeName": {
+              "type": "string",
+              "maxLength": 100,
+              "minLength": 0
+            },
+            "dataType": {
+              "type": "string",
+              "maxLength": 100,
+              "minLength": 0
+            },
+            "columnName": {
+              "type": "string",
+              "maxLength": 100,
+              "minLength": 0
+            },
+            "description": {
+              "type": "string",
+              "maxLength": 1000,
+              "minLength": 0
+            },
+            "isPrimaryKey": {
+              "type": "boolean"
+            },
+            "isRequired": {
+              "type": "boolean"
+            },
+            "isUnique": {
+              "type": "boolean"
+            },
+            "isIndexed": {
+              "type": "boolean"
+            },
+            "length": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "precision": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "scale": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "defaultValue": {
+              "type": "string",
+              "maxLength": 255,
+              "minLength": 0
+            }
+          },
+          "required": [
+            "attributeName",
+            "dataType",
+            "entityId"
+          ]
+        }
+      }
+    }
+  }
